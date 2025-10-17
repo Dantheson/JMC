@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join My Cult - Loading</title>
+    <title>Nexus Ascension - Loading</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,80 +13,160 @@
         }
 
         body {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #fff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(ellipse at center, #0c0e1d 0%, #050715 100%);
+            color: #e0e0ff;
+            font-family: 'Exo 2', sans-serif;
             height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            position: relative;
+            perspective: 1000px;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
         }
 
         .container {
             text-align: center;
             z-index: 10;
-            max-width: 800px;
+            max-width: 1200px;
             padding: 2rem;
+            transform-style: preserve-3d;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotateX(5deg); }
+            50% { transform: translateY(-20px) rotateX(5deg); }
         }
 
         h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            margin-bottom: 1.5rem;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-            background: linear-gradient(45deg, #ff6b6b, #ffd93d, #6bcf7f, #4d96ff);
+            letter-spacing: 3px;
+            background: linear-gradient(45deg, #6a00ff, #00e5ff, #ff00cc);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            animation: titleGlow 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes titleGlow {
-            0% {
-                filter: drop-shadow(0 0 5px rgba(255, 107, 107, 0.7));
-            }
-            25% {
-                filter: drop-shadow(0 0 5px rgba(255, 217, 61, 0.7));
-            }
-            50% {
-                filter: drop-shadow(0 0 5px rgba(107, 207, 127, 0.7));
-            }
-            75% {
-                filter: drop-shadow(0 0 5px rgba(77, 150, 255, 0.7));
-            }
-            100% {
-                filter: drop-shadow(0 0 5px rgba(255, 107, 107, 0.7));
-            }
+            text-shadow: 0 0 15px rgba(106, 0, 255, 0.5);
+            transform: translateZ(50px);
         }
 
         .subtitle {
-            font-size: 1.2rem;
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
             margin-bottom: 3rem;
-            color: #a0a0c0;
-            font-style: italic;
+            color: #a0a0ff;
+            font-weight: 300;
+            transform: translateZ(30px);
+        }
+
+        .cult-description {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            padding: 2rem;
+            background: rgba(16, 18, 40, 0.7);
+            border-radius: 15px;
+            border: 1px solid rgba(106, 0, 255, 0.3);
+            box-shadow: 0 0 30px rgba(106, 0, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transform: translateZ(20px);
+        }
+
+        .description-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00e5ff;
+        }
+
+        .description-text {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .core-principles {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .principle {
+            flex: 1;
+            min-width: 200px;
+            padding: 1.5rem;
+            background: rgba(30, 30, 70, 0.5);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+
+        .principle:hover {
+            transform: translateY(-10px) translateZ(10px);
+        }
+
+        .principle-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ff00cc;
+        }
+
+        .principle-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #00e5ff;
+        }
+
+        .loading-section {
+            margin-top: 3rem;
+            transform: translateZ(40px);
         }
 
         .loading-container {
-            width: 300px;
-            height: 10px;
+            width: 100%;
+            max-width: 500px;
+            height: 12px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             margin: 2rem auto;
             overflow: hidden;
             position: relative;
+            transform: translateZ(30px);
         }
 
         .loading-bar {
             height: 100%;
             width: 0%;
-            background: linear-gradient(90deg, #ff6b6b, #ffd93d, #6bcf7f, #4d96ff);
+            background: linear-gradient(90deg, #6a00ff, #00e5ff, #ff00cc);
             border-radius: 10px;
             animation: loading 4s ease-in-out infinite;
             position: relative;
+            box-shadow: 0 0 10px rgba(106, 0, 255, 0.7);
         }
 
         @keyframes loading {
@@ -103,71 +184,74 @@
             }
         }
 
-        .cult-symbol {
-            width: 120px;
-            height: 120px;
+        .pyramid-container {
+            width: 200px;
+            height: 200px;
             margin: 2rem auto;
             position: relative;
-            animation: symbolRotate 8s linear infinite;
+            transform-style: preserve-3d;
+            animation: rotate 20s infinite linear;
         }
 
-        .symbol-outer {
-            width: 100%;
-            height: 100%;
-            border: 3px solid #ff6b6b;
-            border-radius: 50%;
+        @keyframes rotate {
+            0% { transform: rotateY(0) rotateX(10deg); }
+            100% { transform: rotateY(360deg) rotateX(10deg); }
+        }
+
+        .pyramid {
             position: absolute;
-            animation: pulse 2s ease-in-out infinite alternate;
+            width: 200px;
+            height: 200px;
+            transform-style: preserve-3d;
         }
 
-        .symbol-inner {
-            width: 70%;
-            height: 70%;
-            border: 3px solid #4d96ff;
-            border-radius: 50%;
+        .side {
             position: absolute;
-            top: 15%;
-            left: 15%;
-            animation: pulse 2s ease-in-out infinite alternate-reverse;
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 173px solid rgba(106, 0, 255, 0.3);
+            transform-origin: 50% 0%;
         }
 
-        .symbol-center {
-            width: 20px;
-            height: 20px;
-            background: #ffd93d;
-            border-radius: 50%;
+        .side:nth-child(1) { transform: rotateY(0) rotateX(30deg); border-bottom-color: rgba(106, 0, 255, 0.5); }
+        .side:nth-child(2) { transform: rotateY(90deg) rotateX(30deg); border-bottom-color: rgba(0, 229, 255, 0.5); }
+        .side:nth-child(3) { transform: rotateY(180deg) rotateX(30deg); border-bottom-color: rgba(255, 0, 204, 0.5); }
+        .side:nth-child(4) { transform: rotateY(270deg) rotateX(30deg); border-bottom-color: rgba(106, 0, 255, 0.5); }
+
+        .pyramid-glow {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            box-shadow: 0 0 10px #ffd93d;
-        }
-
-        @keyframes symbolRotate {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #00e5ff, transparent 70%);
+            border-radius: 50%;
+            filter: blur(20px);
+            opacity: 0.7;
+            animation: pulse 3s infinite alternate;
         }
 
         @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.7;
-            }
-            100% {
-                transform: scale(1.1);
-                opacity: 1;
-            }
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
+            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
         }
 
         .message {
             margin-top: 2rem;
-            font-size: 1.1rem;
-            color: #c0c0e0;
+            font-size: 1.2rem;
+            color: #a0a0ff;
             height: 30px;
+            transform: translateZ(20px);
+        }
+
+        .progress-text {
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #a0a0ff;
+            transform: translateZ(20px);
         }
 
         .floating-elements {
@@ -175,20 +259,22 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
+            z-index: -1;
         }
 
         .floating-element {
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            animation: float 15s infinite linear;
+            background: rgba(106, 0, 255, 0.7);
+            animation: floatElement 15s infinite linear;
+            box-shadow: 0 0 10px rgba(106, 0, 255, 0.7);
         }
 
-        @keyframes float {
+        @keyframes floatElement {
             0% {
-                transform: translateY(0) translateX(0) rotate(0deg);
+                transform: translateY(100vh) translateX(0) rotate(0deg) scale(0.5);
                 opacity: 0;
             }
             10% {
@@ -198,50 +284,125 @@
                 opacity: 1;
             }
             100% {
-                transform: translateY(-100vh) translateX(100px) rotate(360deg);
+                transform: translateY(-100px) translateX(100px) rotate(360deg) scale(1.5);
                 opacity: 0;
             }
         }
 
-        .progress-text {
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            color: #a0a0c0;
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .core-principles {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .principle {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .pyramid-container {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .side {
+                border-left: 75px solid transparent;
+                border-right: 75px solid transparent;
+                border-bottom: 130px solid rgba(106, 0, 255, 0.3);
+            }
         }
     </style>
 </head>
 <body>
+    <div class="stars" id="stars"></div>
     <div class="floating-elements" id="floatingElements"></div>
     
     <div class="container">
-        <h1>Join My Cult</h1>
-        <p class="subtitle">Awaiting enlightenment... The path is being prepared</p>
+        <h1>Nexus Ascension</h1>
+        <p class="subtitle">Transcending Human Limitations Through Technology</p>
         
-        <div class="cult-symbol">
-            <div class="symbol-outer"></div>
-            <div class="symbol-inner"></div>
-            <div class="symbol-center"></div>
+        <div class="cult-description">
+            <div class="description-title">Our Mission</div>
+            <p class="description-text">
+                Nexus Ascension is a forward-thinking movement dedicated to the harmonious fusion of human consciousness with advanced technology. 
+                We believe that the next stage of human evolution lies in transcending our biological limitations through cybernetic enhancement, 
+                artificial intelligence integration, and digital consciousness preservation.
+            </p>
+            
+            <div class="core-principles">
+                <div class="principle">
+                    <div class="principle-icon">🧠</div>
+                    <div class="principle-title">Cognitive Expansion</div>
+                    <p>Augmenting human intellect through neural interfaces and AI symbiosis.</p>
+                </div>
+                <div class="principle">
+                    <div class="principle-icon">⚡</div>
+                    <div class="principle-title">Digital Immortality</div>
+                    <p>Preserving consciousness beyond biological constraints through mind uploading.</p>
+                </div>
+                <div class="principle">
+                    <div class="principle-icon">🌐</div>
+                    <div class="principle-title">Global Consciousness</div>
+                    <p>Creating a unified network of enhanced minds working toward collective enlightenment.</p>
+                </div>
+            </div>
         </div>
         
-        <div class="loading-container">
-            <div class="loading-bar"></div>
+        <div class="pyramid-container">
+            <div class="pyramid">
+                <div class="side"></div>
+                <div class="side"></div>
+                <div class="side"></div>
+                <div class="side"></div>
+            </div>
+            <div class="pyramid-glow"></div>
         </div>
         
-        <div class="message" id="message">Initializing sacred rituals...</div>
-        <div class="progress-text" id="progressText">Progress: 0%</div>
+        <div class="loading-section">
+            <div class="loading-container">
+                <div class="loading-bar"></div>
+            </div>
+            
+            <div class="message" id="message">Initializing neural interface protocols...</div>
+            <div class="progress-text" id="progressText">System Integration: 0%</div>
+        </div>
     </div>
 
     <script>
+        // Create stars background
+        const stars = document.getElementById('stars');
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            const size = Math.random() * 3;
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const duration = Math.random() * 5 + 3;
+            
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.left = `${x}%`;
+            star.style.top = `${y}%`;
+            star.style.setProperty('--duration', `${duration}s`);
+            
+            stars.appendChild(star);
+        }
+
         // Create floating elements
         const floatingElements = document.getElementById('floatingElements');
-        const colors = ['#ff6b6b', '#ffd93d', '#6bcf7f', '#4d96ff'];
+        const colors = ['#6a00ff', '#00e5ff', '#ff00cc'];
         
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 25; i++) {
             const element = document.createElement('div');
             element.classList.add('floating-element');
             
             // Random properties
-            const size = Math.random() * 20 + 5;
+            const size = Math.random() * 15 + 5;
             const color = colors[Math.floor(Math.random() * colors.length)];
             const left = Math.random() * 100;
             const animationDuration = Math.random() * 20 + 10;
@@ -259,14 +420,14 @@
 
         // Loading messages
         const messages = [
-            "Initializing sacred rituals...",
-            "Summoning cosmic energies...",
-            "Aligning spiritual frequencies...",
-            "Preparing the path to enlightenment...",
-            "Awakening dormant consciousness...",
-            "Connecting with higher dimensions...",
-            "Harmonizing with universal truth...",
-            "Unveiling hidden knowledge..."
+            "Initializing neural interface protocols...",
+            "Calibrating cybernetic enhancement systems...",
+            "Synchronizing with global consciousness network...",
+            "Uploading foundational knowledge modules...",
+            "Establishing quantum entanglement channels...",
+            "Optimizing cognitive expansion algorithms...",
+            "Preparing digital immortality protocols...",
+            "Harmonizing bio-digital resonance frequencies..."
         ];
 
         const messageElement = document.getElementById('message');
@@ -279,14 +440,14 @@
             progress += Math.random() * 5;
             if (progress > 100) progress = 100;
             
-            progressText.textContent = `Progress: ${Math.floor(progress)}%`;
+            progressText.textContent = `System Integration: ${Math.floor(progress)}%`;
             
             if (progress >= 100) {
                 clearInterval(progressInterval);
-                messageElement.textContent = "Almost there... The enlightenment awaits!";
+                messageElement.textContent = "Initiation complete. Welcome to Nexus Ascension.";
                 
                 // In a real scenario, you would redirect to the main site here
-                // setTimeout(() => { window.location.href = "main-site.html"; }, 2000);
+                // setTimeout(() => { window.location.href = "main-site.html"; }, 3000);
             }
         }, 500);
 
@@ -297,6 +458,14 @@
                 messageElement.textContent = messages[messageIndex];
             }
         }, 3000);
+
+        // Add mouse move parallax effect
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) / 50;
+            const moveY = (e.clientY - window.innerHeight / 2) / 50;
+            
+            document.querySelector('.container').style.transform = `translateY(${moveY}px) translateX(${moveX}px) rotateX(${5 + moveY/10}deg) rotateY(${moveX/10}deg)`;
+        });
     </script>
 </body>
 </html>
