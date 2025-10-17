@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join My Cult - Loading</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d, #6bcf7f, #4d96ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% {
+                filter: drop-shadow(0 0 5px rgba(255, 107, 107, 0.7));
+            }
+            25% {
+                filter: drop-shadow(0 0 5px rgba(255, 217, 61, 0.7));
+            }
+            50% {
+                filter: drop-shadow(0 0 5px rgba(107, 207, 127, 0.7));
+            }
+            75% {
+                filter: drop-shadow(0 0 5px rgba(77, 150, 255, 0.7));
+            }
+            100% {
+                filter: drop-shadow(0 0 5px rgba(255, 107, 107, 0.7));
+            }
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: #a0a0c0;
+            font-style: italic;
+        }
+
+        .loading-container {
+            width: 300px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin: 2rem auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loading-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff6b6b, #ffd93d, #6bcf7f, #4d96ff);
+            border-radius: 10px;
+            animation: loading 4s ease-in-out infinite;
+            position: relative;
+        }
+
+        @keyframes loading {
+            0% {
+                width: 0%;
+                left: 0;
+            }
+            50% {
+                width: 100%;
+                left: 0;
+            }
+            100% {
+                width: 0%;
+                left: 100%;
+            }
+        }
+
+        .cult-symbol {
+            width: 120px;
+            height: 120px;
+            margin: 2rem auto;
+            position: relative;
+            animation: symbolRotate 8s linear infinite;
+        }
+
+        .symbol-outer {
+            width: 100%;
+            height: 100%;
+            border: 3px solid #ff6b6b;
+            border-radius: 50%;
+            position: absolute;
+            animation: pulse 2s ease-in-out infinite alternate;
+        }
+
+        .symbol-inner {
+            width: 70%;
+            height: 70%;
+            border: 3px solid #4d96ff;
+            border-radius: 50%;
+            position: absolute;
+            top: 15%;
+            left: 15%;
+            animation: pulse 2s ease-in-out infinite alternate-reverse;
+        }
+
+        .symbol-center {
+            width: 20px;
+            height: 20px;
+            background: #ffd93d;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px #ffd93d;
+        }
+
+        @keyframes symbolRotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        .message {
+            margin-top: 2rem;
+            font-size: 1.1rem;
+            color: #c0c0e0;
+            height: 30px;
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .progress-text {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #a0a0c0;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements" id="floatingElements"></div>
+    
+    <div class="container">
+        <h1>Join My Cult</h1>
+        <p class="subtitle">Awaiting enlightenment... The path is being prepared</p>
+        
+        <div class="cult-symbol">
+            <div class="symbol-outer"></div>
+            <div class="symbol-inner"></div>
+            <div class="symbol-center"></div>
+        </div>
+        
+        <div class="loading-container">
+            <div class="loading-bar"></div>
+        </div>
+        
+        <div class="message" id="message">Initializing sacred rituals...</div>
+        <div class="progress-text" id="progressText">Progress: 0%</div>
+    </div>
+
+    <script>
+        // Create floating elements
+        const floatingElements = document.getElementById('floatingElements');
+        const colors = ['#ff6b6b', '#ffd93d', '#6bcf7f', '#4d96ff'];
+        
+        for (let i = 0; i < 20; i++) {
+            const element = document.createElement('div');
+            element.classList.add('floating-element');
+            
+            // Random properties
+            const size = Math.random() * 20 + 5;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const left = Math.random() * 100;
+            const animationDuration = Math.random() * 20 + 10;
+            const animationDelay = Math.random() * 5;
+            
+            element.style.width = `${size}px`;
+            element.style.height = `${size}px`;
+            element.style.background = color;
+            element.style.left = `${left}%`;
+            element.style.animationDuration = `${animationDuration}s`;
+            element.style.animationDelay = `${animationDelay}s`;
+            
+            floatingElements.appendChild(element);
+        }
+
+        // Loading messages
+        const messages = [
+            "Initializing sacred rituals...",
+            "Summoning cosmic energies...",
+            "Aligning spiritual frequencies...",
+            "Preparing the path to enlightenment...",
+            "Awakening dormant consciousness...",
+            "Connecting with higher dimensions...",
+            "Harmonizing with universal truth...",
+            "Unveiling hidden knowledge..."
+        ];
+
+        const messageElement = document.getElementById('message');
+        const progressText = document.getElementById('progressText');
+        let messageIndex = 0;
+        let progress = 0;
+
+        // Simulate progress
+        const progressInterval = setInterval(() => {
+            progress += Math.random() * 5;
+            if (progress > 100) progress = 100;
+            
+            progressText.textContent = `Progress: ${Math.floor(progress)}%`;
+            
+            if (progress >= 100) {
+                clearInterval(progressInterval);
+                messageElement.textContent = "Almost there... The enlightenment awaits!";
+                
+                // In a real scenario, you would redirect to the main site here
+                // setTimeout(() => { window.location.href = "main-site.html"; }, 2000);
+            }
+        }, 500);
+
+        // Change messages
+        setInterval(() => {
+            if (progress < 100) {
+                messageIndex = (messageIndex + 1) % messages.length;
+                messageElement.textContent = messages[messageIndex];
+            }
+        }, 3000);
+    </script>
+</body>
+</html>
